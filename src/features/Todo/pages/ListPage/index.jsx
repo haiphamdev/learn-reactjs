@@ -1,18 +1,18 @@
-import React, { useEffect, useMemo, useState } from "react";
-import PropTypes from "prop-types";
-import TodoList from "../../components/TodoList";
-import { useLocation } from "react-router-dom";
-import queryString from "query-string";
-import { useHistory } from "react-router-dom";
-import { useRouteMatch } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
+import TodoList from '../../components/TodoList';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
+import { useHistory } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 
 ListPage.propTypes = {};
 
 function ListPage(props) {
   const initTodoList = [
-    { id: 1, title: "Eat", status: "new" },
-    { id: 2, title: "Sleep", status: "completed" },
-    { id: 3, title: "Code", status: "new" },
+    { id: 1, title: 'Eat', status: 'new' },
+    { id: 2, title: 'Sleep', status: 'completed' },
+    { id: 3, title: 'Code', status: 'new' },
   ];
 
   const location = useLocation();
@@ -23,12 +23,12 @@ function ListPage(props) {
     const params = queryString.parse(location.search);
     console.log(params);
 
-    return params.status || "all";
+    return params.status || 'all';
   });
 
   useEffect(() => {
     const params = queryString.parse(location.search);
-    setFilteredStatus(params.status || "all");
+    setFilteredStatus(params.status || 'all');
   }, [location.search]);
 
   const handleTodoClick = (todo, idx) => {
@@ -40,7 +40,7 @@ function ListPage(props) {
     // toggle state
     newTodoList[idx] = {
       ...newTodoList[idx],
-      status: newTodoList[idx].status === "new" ? "completed" : "new",
+      status: newTodoList[idx].status === 'new' ? 'completed' : 'new',
     };
 
     // update todo lits
@@ -49,7 +49,7 @@ function ListPage(props) {
 
   const handleShowAllClick = () => {
     // setFilteredStatus("all");
-    const queryParams = { status: "all" };
+    const queryParams = { status: 'all' };
     history.push({
       pathname: match.path,
       search: queryString.stringify(queryParams),
@@ -58,7 +58,7 @@ function ListPage(props) {
 
   const handleShowCompletedClick = () => {
     // setFilteredStatus("completed");
-    const queryParams = { status: "completed" };
+    const queryParams = { status: 'completed' };
     history.push({
       pathname: match.path,
       search: queryString.stringify(queryParams),
@@ -67,7 +67,7 @@ function ListPage(props) {
 
   const handleShowNewClick = () => {
     // setFilteredStatus("new");
-    const queryParams = { status: "new" };
+    const queryParams = { status: 'new' };
     history.push({
       pathname: match.path,
       search: queryString.stringify(queryParams),
@@ -75,9 +75,7 @@ function ListPage(props) {
   };
 
   const renderedTodoList = useMemo(() => {
-    return todoList.filter(
-      (todo) => filteredStatus === "all" || filteredStatus === todo.status
-    );
+    return todoList.filter((todo) => filteredStatus === 'all' || filteredStatus === todo.status);
   }, [todoList, filteredStatus]);
 
   return (
