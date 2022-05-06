@@ -1,7 +1,6 @@
+import NotFound from 'components/NotFound/index';
 import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
-import NotFound from '../../components/NotFound';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
 import ListPage from './pages/ListPage';
 
