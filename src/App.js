@@ -1,3 +1,4 @@
+import Header from 'components/Header/index';
 import React from 'react';
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import NotFound from './components/NotFound';
@@ -9,7 +10,7 @@ import TodoFeature from './features/Todo';
 function App() {
   return (
     <div className="app">
-      Header
+      <Header />
       <p>
         <NavLink to="/todos" activeClassName="active-menu">
           Todos
