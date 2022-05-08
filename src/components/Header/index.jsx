@@ -159,10 +159,8 @@ export default function Header() {
             />
           </div>
 
-          <NavLink to="/products">
-            <Button className={classes.link} color="inherit">
-              Sản phẩm
-            </Button>
+          <NavLink className={classes.link} to="/products">
+            <Button color="inherit">Sản phẩm</Button>
           </NavLink>
 
           {!isLogginIn && (
