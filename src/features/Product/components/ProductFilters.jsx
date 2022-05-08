@@ -23,7 +23,6 @@ function ProductFilters({ filters, onChange }) {
   };
 
   const handleChange = (values) => {
-    console.log(values);
     if (onChange) onChange(values);
   };
 
