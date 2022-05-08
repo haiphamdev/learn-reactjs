@@ -159,15 +159,9 @@ export default function Header() {
             />
           </div>
 
-          <NavLink to="/todos">
+          <NavLink to="/products">
             <Button className={classes.link} color="inherit">
-              Todos
-            </Button>
-          </NavLink>
-
-          <NavLink to="/albums">
-            <Button className={classes.link} color="inherit">
-              Albums
+              Sản phẩm
             </Button>
           </NavLink>
 
