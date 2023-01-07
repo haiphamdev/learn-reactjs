@@ -1,4 +1,5 @@
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import { IconButton } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -10,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Register from 'features/Auth/Register';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -22,7 +24,7 @@ export default function Header() {
     setOpen(false);
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box position="relative">
       <AppBar position="static">
         <Toolbar>
           <StorefrontIcon sx={{ mr: 2 }} />
@@ -35,12 +37,15 @@ export default function Header() {
         </Toolbar>
       </AppBar>
       <Dialog disableEscapeKeyDown open={open}>
+        <IconButton
+          sx={{ position: 'absolute', top: 8, right: 8, color: (theme) => theme.palette.grey[500], zIndex: 1 }}
+          onClick={handleClose}
+        >
+          <CloseIcon />
+        </IconButton>
         <DialogContent>
-          <Register />
+          <Register closeDialog={handleClose} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
       </Dialog>
     </Box>
   );

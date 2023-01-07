@@ -6,6 +6,7 @@ import PasswordField from 'components/form-control/PasswordField';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import LinearProgress from '@mui/material/LinearProgress';
 
 RegisterForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -46,8 +47,11 @@ function RegisterForm(props) {
     }
   };
 
+  const { isSubmitting } = form.formState;
+
   return (
-    <div className="pt-8">
+    <div className="relative pt-8">
+      {isSubmitting && <LinearProgress sx={{ position: 'absolute', top: 1, left: 0, right: 0 }} />}
       <Avatar sx={{ m: '0 auto', bgcolor: (theme) => theme.palette.secondary.main }}>
         <LockOutlinedIcon />
       </Avatar>
@@ -61,6 +65,8 @@ function RegisterForm(props) {
         <PasswordField name="retypePassword" label="Retype Password" form={form} />
 
         <Button
+          disabled={isSubmitting}
+          size="large"
           type="submit"
           variant="contained"
           color="primary"

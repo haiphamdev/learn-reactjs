@@ -5,6 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from 'app/store';
+import { SnackbarProvider } from 'notistack';
 
 const theme = createTheme({
   palette: {
@@ -17,11 +20,15 @@ const theme = createTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+            <App />
+          </SnackbarProvider>
+        </Router>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
